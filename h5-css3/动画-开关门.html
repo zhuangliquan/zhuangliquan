@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开关门</title>
+    <style>
+        body{
+            background-color: #fbfbfb;
+        }
+        .big {
+            margin: 150px auto;
+            width: 500px;
+            height: 300px;
+            border: 5px solid #000;
+            /* 创建成3d容器 */
+            transform-style: preserve-3d;
+            /* 透视 */
+            perspective: 1000px;
+            /* 假设不加透视，加旋转 */
+            /* transform: rotate3d(10,10,0,10deg); */
+            
+        }
+        .big .left ,
+        .big .right {
+            width: 250px;
+            height: 300px;
+            float: left;
+            /* 过渡属性 */
+            transition: all 2s;
+        }
+        .big .left {
+            background-color: red;
+            /* 设置当前的标签位置 */
+            transform-origin: left;
+        }
+        .big .right {
+            background-color: purple;
+            /* 设置当前的标签位置 */
+            transform-origin: right;
+        }
+
+        /* 鼠标在父元素上悬停 */
+        .big:hover .left {
+            transform: rotateY(45deg);
+        }
+        /* 鼠标在父元素上悬停 */
+        .big:hover .right {
+            transform: rotateY(-45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>

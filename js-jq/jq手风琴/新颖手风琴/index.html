@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery手风琴动画</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0
+		}
+
+		body {
+			background-color: #1E1E1E;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		ul {
+			width: 1000px;
+		}
+
+		.wrap {
+			width: 790px;
+			height: 340px;
+			border: 1px solid #373737;
+			margin: 100px auto 0;
+		}
+
+		.wrap li {
+			float: left;
+			width: 158px;
+			height: 340px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			var lis = $('.wrap li');
+			for (var i = 0; i < lis.length; i++) {
+				lis.eq(i).css('backgroundImage', 'url(images/' + (i + 1) + '.png)');
+			}
+			lis.mouseenter(function () {
+				$(this).stop().animate({ width: 790 }).siblings().stop().animate({ width: 0 })
+			}).mouseleave(function () {
+				lis.stop().animate({ width: 158 })
+			})
+		})
+	</script>
+</body>
+
+</html>

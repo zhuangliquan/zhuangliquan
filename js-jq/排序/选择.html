@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择排序</title>
+	<style>
+			body {
+				text-align: center;
+				line-height: 200px;
+			}
+			img {
+				vertical-align: middle;
+			}
+
+	</style>
+</head>
+<body>
+	<img src="./images/xuanze.gif" alt="">
+	<!-- 
+		选择排序，
+		先定义一个元素的最大值与最小值，
+		拿每个元素与最值比较，取大值放到元素最右端，
+		层层比较，互换元素下标位置，再赋值，
+		所以比冒泡排序的效率高， 
+		-->
+	<script>
+		function selectSort(arr){
+			var len = arr.length;
+			var minIndex , v1 ;
+			for(var i = 0 ; i < len -1 ; i++){
+				minIndex = i; 
+				for(var j = i +1 ; j < len ; j++){
+					if(arr[j] < arr[minIndex]){//找出最小的数
+						minIndex = j;//找出最小数的索引值
+					}
+				}
+				v1 = arr[i];//把较大的数记录下来
+				arr[i] = arr[minIndex];//把较小的数摆在前面
+				arr[minIndex] = v1;//把记录下来较大的数 赋值给假设的最小值
+			}
+			return arr;
+		}
+		var arr2 = [3,6,1,9,10];
+		console.log(selectSort(arr2))// [1, 3, 6, 9, 10]
+	</script>
+</body>
+</html>

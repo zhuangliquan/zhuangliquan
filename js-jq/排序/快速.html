@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>快速排序</title>
+	<style>
+			body {
+				text-align: center;
+				line-height: 200px;
+			}
+			img {
+				vertical-align: middle;
+			}
+
+	</style>
+</head>
+<body>
+	<img src="./images/kuaisu.gif" alt="">
+	<!-- 
+		大致分三步：
+
+		1、找基准（一般是以中间项为基准）
+
+		2、遍历数组，小于基准的放在left，大于基准的放在right
+
+		3、递归 
+	-->
+	
+
+	<script>
+
+		function quickSort(arr){
+			if(arr.length <=1){//判断当前数组是否是一个元素
+				return arr;// 是  直接返回
+			}
+			var middleIndex = Math.floor(arr.length/2);//找到中间或者偏中位置的索引值
+			var middle = arr.splice(middleIndex,1)[0];////找到中间或者偏中位置的值
+			var left = [];//定义左边数组 存放偏小的值
+			var right = [];//定义右边数组 存放偏大的值
+			for(var i = 0 ; i < arr.length ;i++){//循环
+				if(arr[i] < middle){//把值偏小的值添加在左边数组
+					left.push(arr[i]);//left数组添加元素
+				}else {//把值偏大的值添加在左边数组
+					right.push(arr[i])//right数组添加元素
+				}
+			}
+			var a = quickSort(left);//递归函数 从小到大排序
+			var b = [middle];//中间的值
+			var c = quickSort(right)//递归函数  从小到大排序
+			return a.concat( b, c);//返回合并之后的数组
+		}
+
+		console.log(quickSort([11,2,355,5,6]))// [2, 5, 6, 11, 355]
+
+	</script>
+</body>
+</html>

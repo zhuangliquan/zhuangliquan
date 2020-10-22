@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body{
+                background-color: #fbfbfb;
+                text-align: center;
+                margin-top: 150px;
+            }
+            #canvas {
+                /* border: 1px solid red; */
+                /* background-color: red; */
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+
+        <script>
+            /** @type {HTMLCanvasElement} */
+            // 获取元素
+            var canvas = document.querySelector("#canvas");
+            // 获取元素绘图上下文 api
+            var context = canvas.getContext("2d");
+
+        // 头部分
+            // 轮廓
+            context.beginPath();
+            context.arc(250, 140, 90, Math.PI / 180 * 0, Math.PI / 180 * 180,true);
+            context.fillStyle='#a4ca39';
+            context.fill();
+            context.closePath();
+            // 左眼
+            context.beginPath();
+            context.fillStyle='white';
+            context.arc(210, 100, 7,Math.PI / 180 * 0, Math.PI / 180 * 360);
+            context.fill();
+            context.closePath();
+            // 右眼
+            context.beginPath();
+            context.arc(290, 100, 7,Math.PI / 180 * 0, Math.PI / 180 * 360);
+            context.fill();
+            context.closePath();
+            // 左耳朵
+            context.beginPath();
+            context.lineWidth=7;  
+            context.strokeStyle='#a4ca39';
+            context.lineCap='round';
+            context.moveTo(188, 30);
+            context.lineTo(210, 58);
+            context.stroke();
+            context.closePath();
+            // 右耳朵
+            context.beginPath();
+            context.moveTo(312, 30);
+            context.lineTo(290, 58);
+            context.stroke();
+            context.closePath();
+            // 身体
+            context.beginPath();
+            context.fillStyle='#a4ca39';
+            context.rect(160, 148, 180, 150);
+            context.fill();  
+            context.closePath();
+
+            context.beginPath();
+            context.lineWidth=40;
+            context.lineCap='round';
+            context.moveTo(180, 293);
+            context.lineTo(320, 293);
+            context.stroke();
+            context.closePath();
+            // 左手
+            context.beginPath();
+            context.lineWidth=38;
+            context.moveTo(132, 160);
+            context.lineTo(132, 250);
+            context.stroke();
+            context.closePath();
+            // 右手
+            context.beginPath();
+            context.moveTo(368, 160);
+            context.lineTo(368, 250);
+            context.stroke();
+            context.closePath();
+            // 左脚
+            context.beginPath();
+            context.moveTo(220, 300);
+            context.lineTo(220, 360);
+            context.stroke();
+            context.closePath();
+            // 右脚
+            context.beginPath();
+            context.moveTo(280, 300);
+            context.lineTo(280, 360);
+            context.stroke();
+            context.closePath();
+        </script>
+    </body>
+</html>

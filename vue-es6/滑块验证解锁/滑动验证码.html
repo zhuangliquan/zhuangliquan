@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>滑动验证码</title>
+  <style>
+    body{
+      background-color: #fbfbfb;
+      height: 650px;
+    }
+    .box {
+      width: 300px;
+      border: 2px solid #e4393c;
+      margin: 150px auto;
+    }
+
+    .auto-img {
+      width: 100%;
+      display: block;
+    }
+
+    .slide {
+      height: 40px;
+      position: relative;
+    }
+
+    .mask {
+      position: absolute;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      background-color: #ddd;
+      z-index: 1;
+    }
+
+    .box-img {
+      position: relative;
+    }
+
+    .img-block {
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      width: 40px;
+      height: 40px;
+      z-index: 4;
+      background-image: url("./01.jpg");
+      background-repeat: no-repeat;
+    }
+
+    .white-block {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: #fff;
+      z-index: 3;
+    }
+
+    .layer {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div class="box-img">
+      <img class="auto-img" src="./01.jpg" alt="">
+      <span class="img-block"></span>
+      <span class="white-block"></span>
+    </div>
+    <div class="slide">
+      <!-- 滑块 -->
+      <div class="mask"></div>
+      <!-- 遮罩层 -->
+      <div class="layer"></div>
+    </div>
+  </div>
+
+
+  <script>
+    window.onload = () => {
+
+      //获取元素的方法
+      function query(selector) {
+        return document.querySelector(selector);
+      }
+
+      //获取box-img元素宽度
+      let boxImg = query('.box-img');
+      let boxImgWidth = boxImg.clientWidth;
+      let boxImgHeight = boxImg.clientHeight;
+      console.log('boxImgWidth ==> ', boxImgWidth);
+      console.log('boxImgHeight ==> ', boxImgHeight);
+
+      //获取图片块的宽度和高度
+      let imgBlock = query('.img-block');
+      let imgBlockWidth = imgBlock.clientWidth;
+      let imgBlockHeight = imgBlock.clientHeight;
+      console.log('imgBlockWidth ==> ', imgBlockWidth);
+      console.log('imgBlockHeight ==> ', imgBlockHeight);
+
+      //获取空白块的元素
+      let whiteBLock = query('.white-block');
+
+      //随机生成空白块的坐标
+      //最小的left
+      let whiteBLockMinLeft = boxImgWidth / 2;
+      //最大的left
+      let whiteBLockMaxLeft = boxImgWidth - imgBlockWidth;
+
+      //最小的top
+      let whiteBLockMinTop = 0;
+      //最大的top
+      let whiteBLockMaxTop = boxImgHeight - imgBlockHeight;
+
+      //随机生成空白块的left
+      let randomLeft = Math.ceil(Math.random() * (whiteBLockMaxLeft - whiteBLockMinLeft + 1) + whiteBLockMinLeft);
+
+      //随机生成空白块的top
+      let randomTop = Math.ceil(Math.random() * (whiteBLockMaxTop - whiteBLockMinTop + 1) + whiteBLockMinTop);
+
+      //设置空白块的坐标
+      whiteBLock.style.left = randomLeft + 'px';
+      whiteBLock.style.top = randomTop + 'px';
+
+      console.log('randomLeft ==> ', randomLeft);
+      console.log('randomTop ==> ', randomTop);
+
+      //随机生成图片块的left
+      //最小的let
+      let imgBlockMinLeft = 0;
+
+      //最大的left
+      let imgBlockMaxLeft = boxImgWidth / 2 - imgBlockWidth;
+
+      let imgBlockRandomLeft = Math.ceil(Math.random() * (imgBlockMaxLeft - imgBlockMinLeft + 1) + imgBlockMinLeft);
+      console.log('imgBlockRandomLeft ==> ', imgBlockRandomLeft);
+
+      //设置图片块的坐标
+      imgBlock.style.left = imgBlockRandomLeft + 'px';
+      imgBlock.style.top = randomTop + 'px';
+
+      imgBlock.style.backgroundPosition = -randomLeft + 'px -' + randomTop + 'px';
+
+      //获取mask元素
+      let mask = query('.mask');
+      mask.style.left = imgBlockRandomLeft + 'px';
+
+      //获取mask的宽度
+      let maskWidth = mask.clientWidth;
+      console.log('maskWidth ==> ', maskWidth);
+
+      //获取layer元素
+      let layer = query('.layer');
+
+      //获取slide的宽度
+      let slideWidth = query('.slide').clientWidth;
+      console.log('slideWidth ==> ', slideWidth);
+
+      let x0 = 0;
+      mask.onmousedown = function (e) {
+        layer.style.display = 'block';
+        //获取鼠标点击相对于mask元素的坐标
+        x0 = e.offsetX;
+
+        console.log('x0 ==> ', x0);
+      }
+
+      layer.onmousemove = function (e) {
+
+        //最小left
+        let minLeft = 0;
+
+        //最大值
+        let maxLeft = slideWidth - maskWidth;
+
+        //移动left
+        let left = e.offsetX - x0;
+
+        //控制left边界
+        left = left >= maxLeft ? maxLeft : left <= minLeft ? minLeft : left;
+
+        //e.offsetX: 相对于绑定事件元素的鼠标坐标
+        mask.style.left = left + 'px';
+
+        imgBlock.style.left = left + 'px';
+      }
+
+
+      layer.onmouseup = function () {
+        console.log('up');
+        //验证是否通过
+        //获取mask的left
+        let left = parseFloat(getComputedStyle(mask).left);
+        console.log('left ==> ', left);
+
+        let l = Math.abs(left - randomLeft);
+
+        if (l <= 5) {
+          alert('pass');
+          imgBlock.style.left = randomLeft + 'px';
+          mask.style.left = randomLeft + 'px';
+        } else {
+          alert('fail');
+        }
+        this.onmousemove = null;
+        this.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

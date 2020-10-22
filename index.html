@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width" />
+    <title>Mr.zhuang</title>
+    <link href="layui/css/layui.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/index_style.css" rel="stylesheet" type="text/css">
+    <link href="css/animate.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- 菜单按钮 -->
+    <div id="menu" class="hover_animation menu_open" data-mark="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="navgation" class="navgation navgation_close">
+        <ul class="point">
+            <li><a href="#">首页</a></li>
+            <li><a href="javascript:;">博客</a></li>
+            <li><a href="javascript:;">留言</a></li>
+        </ul>
+        <div class="logo"><a>Mr.zhuang</a></div>
+    </div>
+    <div class="section" id="section1">
+        <div class="fp-tablecell">
+            <div class="page1">
+                <div class="nav wow zoomIn" data-wow-duration="2s">
+                    <h1 style="font-family: BarbaraHand">Mr.zhuang</h1>
+                    <p>只要朝着一个方向努力，一切都会变得得心应手</p>
+                    <a class="layui-btn layui-btn-normal" style="margin-top: 20px" href="#">Enter
+                        Blog</a>
+                </div>
+                <a class="next wow fadeInUp" data-wow-duration="2s" id="next"></a>
+            </div>
+        </div>
+    </div>
+    <!-- vue -->
+    <div class="section" id="section2">
+        <div class="fp-tablecell">
+            <div class="page2">
+                <div class="warp-box">
+                    <div class="new-article">
+                        <div class="inner wow fadeInDown" data-wow-delay=".2s">
+                            <h1>VUE/ES6</h1>
+                            <p>
+                                不想认命，就去拼命。我始终相信，付出就会有收获
+                            </p>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <!-- 小庄购物系统 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="image/vue-coffee.jpg">
+                                    <a href="./vue-es6/coffee/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./vue-es6/coffee/index.html">
+                                            小庄购物系统
+                                        </a>
+                                    </h4>
+                                    <div class="date">
+                                        2020.05-2020.07
+                                    </div>
+                                    <p>
+                                        本项目是购买奶茶网站，用户可以注册登录账号、购买奶茶、查看奶茶详情以及搜索奶茶。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 小庄阅读神器 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="image/vue-books.png">
+                                    <a href="javascript:;" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="javascript:;">
+                                            小庄阅读神器
+                                        </a>
+                                    </h4>
+                                    <div class="date">
+                                        2020.08-2020.10
+                                    </div>
+                                    <p>
+                                        本项目是阅读书籍和漫画的网站，用户可以看书、听书、查看书详情以及搜索书。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 全球疫情 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="image/es6-全球疫情.jpg">
+                                    <a href="./vue-es6/全球疫情/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./vue-es6/全球疫情/index.html">
+                                            全球疫情
+                                        </a>
+                                    </h4>
+                                    <div class="date">
+                                        关注疫情，从我做起
+                                    </div>
+                                    <p>
+                                        一个可以浏览当前国内外疫情情况的页面，如累计确诊人数、累计死亡人数、现有确诊人数......
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- 省级联动 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/es6-省级联动.jpg" style="width: 100%;margin-left: 0;">
+                                    <a href="./vue-es6/省级联动/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./vue-es6/省级联动/index.html">
+                                            es6-省级联动
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 滑动验证码 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/es6-滑动验证码.jpg" style="width: auto;height:230px;margin-left: 18%;">
+                                    <a href="./vue-es6/滑块验证解锁/滑动验证码.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./vue-es6/滑块验证解锁/滑动验证码.html">
+                                            es6-滑动验证码
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <div class="section" id="section3">
+        <div class="fp-tablecell">
+            <div class="page2">
+                <div class="warp-box">
+                    <div class="new-article">
+                        <div class="inner wow fadeInDown" data-wow-delay=".2s">
+                            <h1>Boostrap项目</h1>
+                            <p>
+                                世上没有白费的努力，更没有碰巧的成功
+                            </p>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="image/bootsrap星巴克.png">
+                                    <a href="./bootstrap/星巴克/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./bootstrap/星巴克/index.html">
+                                            仿星巴克
+                                        </a>
+                                    </h4>
+                                    <p>
+                                        本项目是运用bootstrap框架进行响应式开发的网站，适配各种屏幕尺寸大小。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="image/bootstrap模特.png">
+                                    <a href="./bootstrap/模特/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./bootstrap/模特/index.html">
+                                            仿模特
+                                        </a>
+                                    </h4>
+                                    <p>
+                                        本项目是运用bootstrap框架进行响应式开发的网站，适配各种屏幕尺寸大小。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- HTML/css -->
+    <div class="section" id="section3">
+        <div class="fp-tablecell">
+            <div class="page2 active">
+                <div class="warp-box">
+                    <div class="new-article">
+                        <div class="inner wow fadeInDown" data-wow-delay=".2s">
+                            <h1>HTML5/CSS3</h1>
+                            <p>
+                                保存好你做过的所有的源文件——那是你最好的积累之一
+                            </p>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <!-- 静态页面-花果茶 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/静态页面-花果茶.png">
+                                    <a href="./静态页面/花果茶/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./静态页面/花果茶/index.html">
+                                            静态页面-花果茶
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 静态页面-最世界 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/静态页面-最世界.jpg">
+                                    <a href="./静态页面/最世界/zuiWorld.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./静态页面/最世界/zuiWorld.html">
+                                            静态页面-最世界
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 静态页面-仿豆瓣App -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/静态页面-仿豆瓣.jpg">
+                                    <a href="./h5-css3/仿豆瓣/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./h5-css3/仿豆瓣/index.html">
+                                            静态页面-仿豆瓣App
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 3d树状图 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/3d树状图动画.jpg">
+                                    <a href="./h5-css3/3d树状图动画/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./h5-css3/3d树状图动画/index.html">
+                                            3d树状图
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 22个炫酷动画demo -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/22个炫酷demo动画.jpg">
+                                    <a href="./h5-css3/22个案例demo动画/22个案例demo动画.html" class="link"><i
+                                            class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./h5-css3/22个案例demo动画/22个案例demo动画.html">
+                                            22个炫酷动画demo
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 背景视觉差 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/视觉差.jpg">
+                                    <a href="./h5-css3/背景视觉差-火车、汽车、飞机/背景视觉差.html" class="link"><i
+                                            class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./h5-css3/背景视觉差-火车、汽车、飞机/背景视觉差.html">
+                                            背景视觉差
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 动画-时钟 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/动画-时钟.jpg">
+                                    <a href="./h5-css3/动画-时钟.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./h5-css3/动画-时钟.html">
+                                            动画-时钟
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 雪碧图动画 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/精灵图动画.jpg">
+                                    <a href="./h5-css3/雪碧图动画/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./h5-css3/雪碧图动画/index.html">
+                                            雪碧图动画
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 动画-开关门 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/动画-开关门.jpg">
+                                    <a href="./h5-css3/动画-开关门.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./h5-css3/动画-开关门.html">
+                                            动画-开关门
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- canvas画板 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/canvas画板.jpg">
+                                    <a href="./h5-css3/画板.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./h5-css3/画板.html">
+                                            canvas画板
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- canvas安卓机器人 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/canvas安卓机器人.png">
+                                    <a href="./h5-css3/canvas安卓.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./h5-css3/canvas安卓.html">
+                                            canvas安卓机器人
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 大白 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/大白.jpg">
+                                    <a href="./h5-css3/dabai.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./h5-css3/dabai.html">
+                                            大白
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 手风琴 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/手风琴.jpg">
+                                    <a href="./h5-css3/下拉框手风琴/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./h5-css3/下拉框手风琴/index.html">
+                                            手风琴
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JS/JQ -->
+    <div class="section" id="section3">
+        <div class="fp-tablecell">
+            <div class="page2 active">
+                <div class="warp-box">
+                    <div class="new-article">
+                        <div class="inner wow fadeInDown" data-wow-delay=".2s">
+                            <h1>JS/JQ</h1>
+                            <p>
+                                代码千万行，规范第一行，代码不规范，同事两行泪！
+                            </p>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <!-- 贪吃蛇小游戏 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/js贪吃蛇小游戏.jpg">
+                                    <a href="./js-jq/snake/snakeV0.0.3-面向对象/index.html" class="link"><i
+                                            class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/snake/snakeV0.0.3-面向对象/index.html">
+                                            贪吃蛇小游戏
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 飞机大战小游戏 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/js飞机大战小游戏.jpg">
+                                    <a href="./js-jq/飞机大战/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/飞机大战/index.html">
+                                            飞机大战小游戏
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 拼图小游戏 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/js拼图小游戏.jpg">
+                                    <a href="./js-jq/拼图案例游戏/拼图小游戏.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/拼图案例游戏/拼图小游戏.html">
+                                            拼图小游戏
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 无缝轮播图 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/js无缝轮播图.jpg">
+                                    <a href="./js-jq/banner-无缝轮播版本/轮播图.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/banner-无缝轮播版本/轮播图.html">
+                                            无缝轮播图
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 时钟 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/js时钟.jpg">
+                                    <a href="./js-jq/时钟.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/时钟.html">
+                                            炫酷时钟
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 放大镜 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/放大镜.jpg">
+                                    <a href="./js-jq/放大镜/放大镜.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/放大镜/放大镜.html">
+                                            放大镜
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 随机点名 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/js点名册.jpg">
+                                    <a href="./js-jq/随机点名.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/随机点名.html">
+                                            随机点名
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 楼层跳跃 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/js楼层跳跃.jpg">
+                                    <a href="./js-jq/楼层跳跃.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/楼层跳跃.html">
+                                            楼层跳跃
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- jq无缝轮播图 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/jq无缝轮播图.jpg">
+                                    <a href="./js-jq/jq无缝轮播图/demo.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/jq无缝轮播图/demo.html">
+                                            jq无缝轮播图
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- jq炫酷手风琴 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/jq手风琴.jpg">
+                                    <a href="./js-jq/jq手风琴/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/jq手风琴/index.html">
+                                            jq炫酷手风琴
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- jq放大镜 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/jq放大镜.jpg">
+                                    <a href="./js-jq/jq放大镜/index.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/jq放大镜/index.html">
+                                            jq放大镜
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- jq美颜对比 -->
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s"
+                            style="padding: 0 10px">
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="./image/jq美颜对比.jpg">
+                                    <a href="./js-jq/jq美颜对比/美颜对比.html" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="./js-jq/jq美颜对比/美颜对比.html">
+                                            jq美颜对比
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section4">
+        <div class="fp-tablecell">
+            <div class="page3">
+                <div class="warp-box">
+                    <div class="warp">
+                        <div class="inner">
+                            <div class="links">
+                                <ul>
+                                    <li class="wow fadeInLeft"><a href="javascript:;">关于</a></li>
+                                    <li class="wow fadeInRight"><a href="javascript:;">+友情链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section5">
+        <div class="fp-tablecell">
+            <div class="page4">
+                <div class="warp-box">
+                    <div class="about">
+                        <div class="inner">
+                            <h1 class="wow fadeInLeft">Mr.zhuang个人博客</h1>
+                            <p class="wow fadeInRight">
+                                一天很短，开心了就笑，不开心了就过会儿再笑。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer wow fadeInUp" id="contact">
+        <div class="footer-top">
+            <div class="container">
+                <div class="layui-row">
+                    <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+                        <div class="single-widget about">
+                            <div class="footer-logo">
+                                <h2>zlq个人博客</h2>
+                            </div>
+                            <p>世界那么大，我想去看看</p>
+                            <div class="button">
+                                <a href="javascript:;" class="btn layui-btn layui-btn-normal">About Me</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+                        <div class="single-widget">
+                            <h2>相关链接</h2>
+                            <ul class="social-icon">
+                                <li class="active"><a href="javascript:;"><i class="fa fa-book"></i>博文</a></li>
+                                <li class="active"><a href="javascript:;"><i class="fa fa-comments"></i>留言</a></li>
+                                <li class="active"><a href="javascript:;"><i class="fa fa-share"></i>资源</a></li>
+                                <li class="active"><a href="javascript:;"><i class="fa fa-snowflake-o"></i>日记</a></li>
+                                <li class="active"><a href="javascript:;"><i class="fa fa-files-o"></i>归档</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs12 layui-col-sm12 layui-col-md4">
+                        <div class="single-widget contact">
+                            <h2>联系我</h2>
+                            <ul class="list">
+                                <li><i class="fa fa-map"></i>地址:广东省广州区</li>
+                                <li><i class="fa fa-qq"></i>tel: 13380752681 </li>
+                                <li><i class="fa fa-envelope"></i>邮箱: 1581160118@qq.com</li>  
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="layui-row">
+                    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 text-center">
+                        <p>Copyright &copy; 2020-2021 ZLQ个人博客 All Rights Reserved V.5.1.3 粤ICP备1231100号</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="layui/layui.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

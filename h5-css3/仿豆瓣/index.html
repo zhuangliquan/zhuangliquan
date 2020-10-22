@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 移动端 - 仿照豆瓣  douban</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- 最大容器 -->
+    <div class="db-wrapper">
+        <!-- 01.页面头部  -->
+        <header class="db-header">
+            <div class="db-header-box">
+                <a href="javascript:;" class="db-logo"></a>
+                <form action="">
+                    <input type="text" placeholder="搜索">
+                </form>
+                <a href="javascript:;" class="db-cancel">取消</a>
+            </div>
+        </header>
+        <!-- 02.页面链接  -->
+        <section class="db-link">
+            <div class="db-link-left">
+                <div class="img-box"><img src="./img/dou.png" alt=""></div>
+                <div class="txt-box">
+                    <h3>豆瓣App</h3>
+                    <p>记录你的书影音生活</p>
+                </div>
+            </div>
+            <div class="db-link-right">
+                <a href="javascript:;">
+                    <button class="btn-download">打开App</button>
+                </a>
+            </div>
+        </section>
+        <!-- 03.页面导航  -->
+        <nav class="db-nav">
+            <ul>
+                <li>
+                    <a href="javascript:;">
+                        <h3>找电影</h3>
+                        <p>影院热映</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <h3>热播剧</h3>
+                        <p>剧集综艺</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <h3>畅销书</h3>
+                        <p>畅销排行</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <h3>找小组</h3>
+                        <p>志趣相投</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <h3>热播剧</h3>
+                        <p>新碟榜</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <h3>豆品</h3>
+                        <p>生活美学</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- 4.豆瓣榜单  -->
+        <section class="db-bangdan">
+            <div class="db-bangdan-left">
+                <h3>豆瓣榜单</h3>
+            </div>
+            <div class="db-bangdan-right">
+                <a href="javascript:;"> 用App看更多 &gt; </a>
+            </div>
+        </section>
+        <!-- 5.推荐列表  -->
+        <section class="db-list">
+            <ul>
+                <li id="list_item">
+                    <a href="javascript:;">
+                        <div class="img-left" style="background-image: url(./img/top250.jpg);"></div>
+                        <div class="txt-right">
+                            <p>1.0 肖申克的救赎 <span>9.7</span> </p>
+                            <p>2.0 霸王别姬 <span>9.6</span> </p>
+                            <p>3.0 阿甘正传 <span>9.5</span> </p>
+                        </div>
+                    </a>
+                    <button class="btn-app">用App打开</button>
+                </li>
+
+                <li id="list_item">
+                    <a href="javascript:;">
+                        <div class="img-left" style="background-image: url(./img/top250.jpg);"></div>
+                        <div class="txt-right" >
+                            <p>1.0 肖申克的救赎 <span>9.7</span> </p>
+                            <p>2.0 霸王别姬 <span>9.6</span> </p>
+                            <p>3.0 阿甘正传 <span>9.5</span> </p>
+                        </div>
+                    </a>
+                    <button class="btn-app">用App打开</button>
+                </li>
+            </ul>
+        </section>
+        <!-- 6.页面按钮  -->
+        <footer class="db-footer">
+            <a href="javascript:;">
+                <button class="btn-down-load"> 打开App,查看更多热门讨论</button>
+            </a>
+        </footer>
+    </div>
+</body>
+
+</html>

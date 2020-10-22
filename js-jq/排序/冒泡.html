@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>冒泡排序</title>
+	<style>
+			body {
+				text-align: center;
+				line-height: 200px;
+			}
+			img {
+				vertical-align: middle;
+			}
+
+	</style>
+</head>
+<body>
+	<img src="./images/maopao.gif" alt="">
+
+	<!-- 冒泡排序：
+		相邻两元素之间两两比较，
+		比较出大值进行赋值互换，
+		再依次与相邻的元素比较，
+		层层递进 #互换元素位置，
+		相互赋值。
+	 -->
+	<script>
+		// var arr2 = [3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+		var arr = [1000,2,55,66,99,2000];
+	    console.log(arr)
+	    // 从小到大
+		function bubbleSort(arr){
+			for(var i = 0 ; i < arr.length -1;i++){
+				for(var j = 0 ; j < arr.length - i - 1 ; j++){
+					// console.log('第'+i+'次循环外,第'+j+'次内循环')
+					if(arr[j] > arr[j+1]){// 相邻两个元素比较 如果前一个值比后一个值大
+						var v1 = arr[j];//把前一个值记录下来
+						arr[j] = arr[j+1];//把后一个值赋值个前一个的位置上
+						arr[j+1] = v1;//把记录下的前一个值(较大的值)赋值给后一个位置
+					}
+				}
+			}
+			return arr;
+		}
+ 		console.log(bubbleSort(arr))//[2, 55, 66, 99, 1000, 2000]
+	
+
+	</script>
+	
+</body>
+</html>

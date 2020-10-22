@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./area.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: #fbfbfb;
+            height: 650px;
+        }
+
+        .box {
+            width: 400px;
+            margin: 50px auto;
+        }
+
+        h4 {
+            text-align: center;
+        }
+
+        select {
+            margin: 0 auto;
+            margin-top: 20px;
+            display: block;
+            height: 40px;
+            line-height: 40px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h4>籍贯：</h4>
+        <select name="" id="province">
+            <option value="">请选择省份</option>
+        </select>
+        <select name="" id="city" disabled>
+            <option value="">请选择城市</option>
+        </select>
+        <select name="" id="district" disabled>
+            <option value="">请选择区/县</option>
+        </select>
+    </div>
+</body>
+
+<script>
+    let province = document.querySelector('#province');
+    let city = document.querySelector('#city');
+    let district = document.querySelector('#district');
+
+    province.onfocus = () => {
+        let html = "";
+        for (let key in area.province_list) {
+            html += `<option value="${area.province_list[key]}" id ="${key}">${area.province_list[key]}</option>`;
+          
+        
+        }
+        province.innerHTML = html;
+        // city.innerHTML =""
+        city.removeAttribute('disabled');
+
+        let html1 ="";
+        html1 += `<option value="">请选择城市</option>`
+        city.innerHTML = html1;
+
+        let html2 ="";
+        html2 += `<option value="">请选择区/县</option>`
+        district.innerHTML = html2;
+    }
+
+    let provinceValue = ""
+    let provinceIndex = "";
+    let provinceId = "";
+
+    province.onblur = () =>{
+        provinceValue = province.value;
+        provinceIndex = province.selectedIndex;
+        provinceId = province[provinceIndex].id;
+        console.log(provinceValue)
+        console.log(provinceIndex);
+        console.log(provinceId) 
+    }
+
+    city.onfocus = () =>{
+        let num = provinceId.slice(0,2);
+        console.log(num)
+
+        let html = "";
+        for(let key in area.city_list){
+            if(key.startsWith(num)){
+                html += `<option value="${area.city_list[key]}" id ="${key}">${area.city_list[key]}</option>`;
+            }
+        }
+        city.innerHTML = html;
+        district.removeAttribute('disabled');       
+        
+        let html2 ="";
+        html2 += `<option value="">请选择区/县</option>`
+        district.innerHTML = html2;
+    }
+
+    let cityValue = ""
+    let cityIndex = "";
+    let cityId = "";
+
+    city.onblur = () =>{
+        cityValue = city.value;
+        cityIndex = city.selectedIndex;
+        cityId = city[cityIndex].id;
+        console.log(cityValue)
+        console.log(cityIndex);
+        console.log(cityId)
+
+    }
+
+    district.onfocus = () =>{
+        let num = cityId.slice(0,4);
+        console.log(num)
+
+        let html = "";
+        for(let key in area.county_list){
+            if(key.startsWith(num)){
+                html += `<option value="${area.county_list[key]}" id ="${key}">${area.county_list[key]}</option>`;
+            }
+        }
+        district.innerHTML = html;
+    }
+</script>
+
+</html>

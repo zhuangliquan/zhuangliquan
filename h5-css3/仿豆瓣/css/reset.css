@@ -1,0 +1,21 @@
+html , body , ul , li, ol , form , input, h1 , h2 , h3 , h4 ,h5 , p,div ,a , nav  {
+    padding: 0;
+    margin: 0;
+    /* 改变盒子大小计算方式 */
+    box-sizing: border-box;
+    /* 点击高亮设置为(transparent)透明*/
+    -webkit-tap-highlight-color: transparent;
+}
+ul ,ol {
+    list-style: none;
+}
+input , button {
+    border: 0;
+    outline: none;
+}
+a,
+a:hover ,
+a:focus {
+    color: #333;
+    text-decoration: none;
+}

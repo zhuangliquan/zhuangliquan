@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选中文本内容.html</title>
+</head>
+<body>
+	<p>
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+	</p>
+</body>
+</html>
+<script>
+	// 选中文本
+	function SelectText(){
+	      try{
+	      		//标准浏览器
+	            var selecter=window.getSelection().toString();//选中文本
+	            if(selecter!=null&&selecter.trim()!=""){
+	                  console.log(selecter);
+	                  document.execCommand("Copy");//复制文本
+
+	            }
+	      }catch(err){
+	      		//ie浏览器
+	            var selecter=document.selection.createRange();
+	            var s=selecter.text;
+	            if(s!=null&&s.trim()!=""){
+	                   console.log(s)
+	            }
+	      }
+	}
+
+	document.onmouseup = function(){
+		SelectText();
+	}
+
+
+	// try {
+	// 	console.log(a)
+	// }
+	// catch(e) {
+	// 	console.log(e)
+	// }
+
+
+</script>

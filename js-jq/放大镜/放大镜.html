@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜 (JQ)</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background-color: #fbfbfb;
+        }
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .product-detail-small {
+            width: 350px;
+            height: 350px;
+            background-color: #fbfbfb;
+            position: relative;
+            float: left;
+            margin-right: 100px;
+            margin-top: 100px;
+        }
+        .product-detail-small .small-mask {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 3;
+            width: 175px;
+            height: 175px;
+            background-color: rgba(223, 68, 47, 0.8);
+            cursor: move;
+            display: none;
+        }
+        .product-detail-small .small-image {
+            display: block;
+            width: 350px;
+            height: 350px;
+        }
+
+        .product-detail-big {
+            margin-top: 100px;
+            width:400px;
+            height: 400px;
+            float: left;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+        .product-detail-big .big-image {
+            display: block;
+            width: 800px;
+            height: 800px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            
+        }
+    </style>
+
+    <script>
+        // function load() {
+            // 需求：
+                // 1.0 鼠标移入小盒子的时候，显示遮罩层(.small-mask)，显示大盒子(.product-detail-big)
+                // 2.0 鼠标移入小盒子的时候，隐藏遮罩层(.small-mask)，隐藏大盒子(.product-detail-big)
+                // 3.0 鼠标在小盒子移动，那么遮罩层跟随鼠标移动，大图片(.big-image)跟随遮罩层反方向移动
+            // 步骤：
+        //         // 1.0 获取相关元素
+        //         var small_box = document.querySelector(".product-detail-small");
+        //         var small_mask = document.querySelector(".small-mask");
+        //         var big_box = document.querySelector(".product-detail-big");
+        //         var big_image = document.querySelector(".big-image");
+
+        //         // 2.0 编写公共函数 show()  hide()
+        //         function show(dom){
+        //             dom.style.display = "block";
+        //         }
+        //         function hide(dom){
+        //             dom.style.display = "none";
+        //         }
+        //         console.log(small_box)
+        //         // 3.0 鼠标移入小盒子
+        //         small_box.onmouseenter = function(){
+        //             // 3.0.1  显示遮罩层
+        //             show(small_mask);
+        //             // 3.0.2  显示大盒子
+        //             show(big_box);
+        //         }
+        //         // 4.0 鼠标离开小盒子
+        //         small_box.onmouseleave = function(){
+        //             // 4.0.1 隐藏遮罩层
+        //             hide(small_mask);
+        //             // 4.0.2 隐藏大盒子
+        //             hide(big_box);
+        //         }
+        //         // 5.0 监听鼠标在小盒子移动
+        //         // 5.0.1 获取小盒子距离body的左边距离
+        //         var left = small_box.offsetLeft;
+        //         // 5.0.2 获取小盒子距离body的顶部距离
+        //         var ttop =small_box.offsetTop;
+              
+        //         // 5.0.3 事件绑定
+        //         small_box.onmousemove = function(event){
+        //             // 元素需要显示了，才可以获取元素的尺寸
+        //             // 遮罩层可移动的最大距离
+        //             var maxSmallX = small_box.offsetWidth - small_mask.offsetWidth;
+        //             var maxSmallY = small_box.offsetHeight - small_mask.offsetHeight;
+        //             // 大图片可移动的最大距离
+        //             var maxBigX = big_image.offsetWidth - big_box.offsetWidth;
+        //             var maxBigY = big_image.offsetHeight - big_box.offsetHeight;
+
+
+        //             // 5.0.4 获取鼠标在页面的坐标位置
+        //             var pageX = event.pageX;
+        //             var pageY = event.pageY;
+        //             // 5.0.5 计算鼠标在小盒子的位置
+        //             // 为啥要减去遮罩层的一半（ - small_mask.offsetWidth/2）
+        //             // 希望鼠标在遮罩层的中心位置
+        //             var x = pageX - left - small_mask.offsetWidth/2;
+        //             var y = pageY - ttop - small_mask.offsetHeight/2;
+        //             // console.log({
+        //             //     left:left,
+        //             //     ttop:ttop,
+        //             //     pageX:pageX,
+        //             //     pageY:pageY,
+        //             //     x:x,
+        //             //     y:y
+        //             // })
+        //             // 5.0.6 x 和 y 需要在 0 ~ 175 
+        //             // 判断水平方向不超小盒子范围
+        //             if(x < 0 ){
+        //                 x = 0;
+        //             }
+        //             if(x > maxSmallX){
+        //                 x = maxSmallX;
+        //             }
+        //             // 判断垂直方向不超小盒子范围
+        //             if(y < 0 ){
+        //                 y = 0;
+        //             }
+        //             if(y > maxSmallY){
+        //                 y = maxSmallY;
+        //             }
+        //             // 5.0.7 设置遮罩层的位置
+        //             small_mask.style.left = x +"px";
+        //             small_mask.style.top = y +"px";
+
+        //             // 5.0.8 计算大图片的位置
+        //             var demoX = x / maxSmallX;
+        //             var demoY = y / maxSmallY ;
+
+        //             // 5.0.9 设置大图片的位置
+        //             console.log(maxBigX)
+        //             big_image.style.left =- (demoX * maxBigX) +"px";
+        //             big_image.style.top  = -(demoY * maxBigY) +"px";
+        //         }
+        // }
+
+        // //页面需要加载完成，才可以获取元素
+        // window.onload = load;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="product-detail-small">
+            <div class="small-mask"></div>
+            <img src="./images/small.jpg" alt="" class="small-image">
+        </div>
+        <div class="product-detail-big">
+            <img src="./images/big.jpg" alt="" class="big-image">
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="./jquery/jquery.js"></script>
+<script>
+     // 需求：
+        // 1.0 鼠标移入小盒子的时候，显示遮罩层(.small-mask)，显示大盒子(.product-detail-big)
+        // 2.0 鼠标移入小盒子的时候，隐藏遮罩层(.small-mask)，隐藏大盒子(.product-detail-big)
+        // 3.0 鼠标在小盒子移动，那么遮罩层跟随鼠标移动，大图片(.big-image)跟随遮罩层反方向移动
+            
+    $(function(){
+        // 1. 2. 
+        $(".product-detail-small").hover(function(){
+            $(".small-mask").show();
+            $(".product-detail-big").show();
+        },
+        function(){
+            $(".small-mask").hide();
+            $(".product-detail-big").hide();
+        })
+
+        // 遮罩层和大盒子可移动的最大距离
+        var maxSmallX = 175;
+        var maxSmallY = 175;
+        var maxBigX = 400;
+        var maxBigY =  400;
+        // 3.0 
+        $(".product-detail-small").mousemove(function(event){
+            // console.log(event)
+            var x = event.pageX - $(this).offset().left - $(".small-mask").width()/2;
+            var y = event.pageY - $(this).offset().top - $(".small-mask").height()/2;
+
+            //判断
+            if(x < 0 ){
+                x = 0;
+            } 
+
+            if(x > maxSmallX){
+                x = maxSmallX;
+            }
+
+            if(y < 0 ){
+                y = 0;
+            } 
+
+            if(y > maxSmallY){
+                y = maxSmallY;
+            }
+            // 设置遮罩层位置
+            $(".small-mask").css({
+                left:x,
+                top:y
+            })
+            // 计算遮罩层在小盒子的当前位置和最大滑动距离的比例
+            var demoX = x / maxSmallX;
+            var demoY = y / maxSmallY;
+            // 计算大图片移动的距离
+            var bigImageX = demoX * maxBigX;
+            var bigImageY = demoY * maxBigY;
+            // 设置大图片的位置
+            $(".big-image").css({
+                left:-bigImageX,
+                top:-bigImageY
+            })
+        })
+    })
+</script>

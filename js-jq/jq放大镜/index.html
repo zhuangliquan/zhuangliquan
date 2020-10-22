@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #fbfbfb;
+            height: 650px;
+            text-align: center;
+        }
+        .stage{
+            margin: 50px auto;
+            width: 700px;
+            height: 400px;
+        }
+        .blowup {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            margin: 20px;
+            cursor: crosshair;
+        }
+
+        .blowup img {
+            width: 100%;
+        }
+
+        .blowup .zoom {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border: 5px solid white;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+        }
+        .left{
+            float: left;
+        }
+        .right {
+            float: left;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="blowup left">
+            <img src="./img/a1.png" alt="">
+        </div>
+
+        <div class="blowup right">
+            <img src="./img/a2.png" alt="">
+        </div>
+    </div>
+
+    <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $.fn.blowup = function (zoomLevel) {
+            console.log(this);
+            // this需要指代 jquery对象
+            // var zoom = zoomLevel
+            this.append('<div class="zoom"></div>')
+
+            // console.log($('.left').height())
+            this.find('.zoom').css({
+                backgroundImage: 'url(' + this.find('img').attr('src') + ')',
+                backgroundSize: this.width() * zoomLevel + 'px ' + this.height() * zoomLevel + 'px'
+            })
+
+            this.on('mousemove', function (event) {
+                // console.log(event.pageX, event.pageY)
+                // $('.left').offset()
+
+                // 鼠标的指针位置
+                var x = event.pageX - $(this).offset().left
+                var y = event.pageY - $(this).offset().top
+
+                console.log(x, y)
+                $(this).find('.zoom').show()
+
+                if (x > $(this).width() || x < 0 || y >= $(this).height() || y < 0) {
+                    $(this).find('.zoom').hide()
+                    return
+                }
+                var zoomSize = {
+                    w: $(this).find('.zoom').outerWidth(),
+                    h: $(this).find('.zoom').outerHeight()
+                }
+
+                $(this).find('.zoom').css({
+                    left: x - zoomSize.w / 2 + 'px',
+                    top: y - zoomSize.h / 2 + 'px',
+                    backgroundPositionX: -(x * zoomLevel + 5 - zoomSize.w / 2) + 'px',
+                    backgroundPositionY: -(y * zoomLevel + 5 - zoomSize.h / 2) + 'px',
+                })
+            })
+            return this
+            // 链式写法原理
+        }
+
+        // var x = $('.left').blowup(1).css({
+        //     opacity: '0.5'
+        // })
+
+        var x = $('.left').blowup(2)
+        $('.right').blowup(10)
+
+    </script>
+</body>
+</html>

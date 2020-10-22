@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇小游戏</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        h3{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #result{
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background-color: skyblue;
+            color: white;
+            position: fixed;
+            left: 280px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h3>按下“s”键即可开始游戏！</h3>
+    <div id="result"></div>
+    <div class="map" id="mapId">
+        <!-- 动态创建 ul li  -->
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script>
+        // 创建snake构造函数的实例
+        var snake = new Snake();
+        console.log(snake);
+        // 调用实例对象的init函数
+        snake.init();
+    </script>
+</body>
+</html>

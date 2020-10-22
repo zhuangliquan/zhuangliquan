@@ -1,0 +1,90 @@
+body{
+    background-color: #fbfbfb;
+}
+html , body , ol , ul {
+    padding: 0;
+    margin: 0;
+}
+ul , ol {
+    list-style: none;
+}
+img {
+    display: block;
+}
+
+.wrapper {
+    width: 420px;
+    height: 280px;
+    border: 10px solid #ccc;
+    margin: 150px auto;
+    overflow: hidden;
+
+    position: relative;/* 相对定位 */
+}
+.banner {
+    width: 420px;
+    height: 280px;
+}
+.banner ul {
+    width: 3000px; /*420 * 6 = 2520 >= 2520*/
+    height: 280px;
+}
+.banner ul li {
+    width: 420px;
+    height: 280px;
+    float: left;
+}
+.banner ul li a {
+    display: block;
+}
+.banner ul li a img {
+    width: 420px;
+    height: 280px;
+}
+
+.propagation {
+    width:420px;
+    height: 20px;
+    /* background-color: red; */
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+}
+.propagation ol {
+    width:100px;
+    height: 20px;
+    /* background-color: skyblue; */
+    margin: 0 auto;
+}
+.propagation ol li {
+    width: 8px;
+    height: 8px;
+    border: 1px solid #fff;
+    background-color: #ccc;
+    float: left;
+    margin: 5px 5px;
+    border-radius: 50%;
+}
+.propagation ol li.active {
+    background-color: red;
+}
+
+.btn {
+    width: 80px;
+    height: 80px;
+    background-color: #f0f0f0;
+    position: absolute;
+    top:50%;
+    margin-top: -40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.btn.left {
+    left:-40px;
+}
+.btn.right {
+    right: -40px;
+}
+.btn span {
+    display: block;
+}

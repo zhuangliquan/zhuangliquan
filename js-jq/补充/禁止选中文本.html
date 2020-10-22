@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>禁止选中文本.html</title>
+</head>
+<body>
+	
+	<div class="container">
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+		hello world!
+	</div>
+
+
+	<script>
+		if(document.all){
+			document.onselectstart = function(){return false;} // for IE
+		}else {
+			document.onmousedown = function(){return false;} //禁止鼠标按下 松开事件
+			document.onmouseup = function(){return false;}
+		}
+		document.onselectstart = new Function('event.returnValue=false;')//禁止开始选择事件
+		// window.getSelection ? window.getSelection().removeAllRanges():document.selection.empty();
+	
+	</script>
+</body>
+</html>

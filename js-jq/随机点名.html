@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机点名</title>
+	<style>
+		body{
+			background-color: #f0f0f0;
+		}
+		.wrapper{
+			width: 800px;
+			margin: 0 auto;
+		}
+		.wrapper h3{
+			height: 100px;
+			line-height: 100px;
+			text-align: center;
+			background-color: #ccc;
+			margin: 0;
+			padding: 0;
+		}
+		.wrapper ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			width: 800px;
+			background-color: lightgreen;
+		}
+		.wrapper ul::after{
+			content: "";
+			display: block;
+			clear: both;
+			height: 0;
+			opacity: 0;
+		}
+		.wrapper ul li{
+			width: 198px;
+			height: 38px;
+			text-align: center;
+			line-height: 38px;
+			border: 1px solid #fff;
+			border-radius: 5px;
+			float: left;
+		}
+		.wrapper ul li.active{
+			border: 1px solid red;
+			background-color: yellow;
+		}
+		button{
+			width: 80px;
+			height: 35px;
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<h3>17软件技术2班学生点名册</h3>
+		<ul>
+		</ul>
+		<button class="btn">随机点名</button>
+	</div>
+
+	<script>
+		// 存放学生名字的数组
+		var data = ["罗兴丽","钟景发","韩艺茹","黄德荣","刘雪敏","何颖昌","周艳文","黄展乐","黄婷婷", "罗璇", "陈展煌", "陈立鹏", "杨宏灿", "吴立锋", "李昌星", "郑玉鹏", "林伙凤", "郑金坤", "黄伟峰", "黄伟锋", "何安旭", "佘荣章", "杨植皓", "吴少聪", "苏寅来","方晚霞","王伟杰","饶俊雄","陈超培","朱中强","丁林昌","陈振武","余绍铨","张展昌","曾巩","陈子豪","潘溢安","李瑾秀","梁俊锋","陈旭丹","庄礼铨","黎霞","温鹏林", "钟运钦","陈嘉健"]
+		//数组的个数
+		var count = data.length; 
+		// 定义随机数方法
+		function random(max,min){
+			// 返回值指定范围的随机数 向下取整
+			return Math.floor(Math.random()*(max - min) + min);
+		}
+		// 定义数组，用来记录所有的学生li标签
+		var students = [];
+		// 定义渲染数据的方法
+		function render(){
+			// 获取指定元素
+			var ul = document.querySelector('.wrapper ul');
+			// 遍历数组
+			// 字符串拼接 1
+			// dom 创建元素 2
+			for (var i = 0; i < count; i++) {
+				// 创建li标签
+				var liCreate = document.createElement('li');
+				// 设置li标签的文本
+				liCreate.innerText = data[i];
+				// 把创建的li标签添加到ul标签
+				ul.appendChild(liCreate);
+				// 把创建的li标签存放在students数组
+				// students.push(liCreate); 
+				students[i] = liCreate;
+			}
+		}
+		// 调用渲染数据
+		render();
+
+		var btn = document.querySelector('.btn');
+		// 点击页面 点名
+		btn.onclick = function(){
+			// console.log(students);
+			// 排他
+			for (var i = 0; i < count; i++) {
+				// 当点击下的时候，移除所有li标签的类名active
+				students[i].classList.remove('active');
+			}
+			// 给指定的li标签添加类名active
+			var index = random(0,count);
+			students[index].classList.add('active');
+		}
+	</script>
+</body>
+</html>

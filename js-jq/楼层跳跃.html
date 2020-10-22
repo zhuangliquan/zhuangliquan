@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>楼层跳跃</title>
+    <style>
+        body{
+            background-color: #fbfbfb;
+        }
+        body , ul , ol {
+            padding: 0;
+            margin: 0;
+        }
+        ul ,ol {
+            list-style: none;
+        }
+        .tt-wraper {
+            width: 1200px;
+            margin: 0 auto;
+            height: 700px;
+            background-color: lightblue;
+        }
+        .tt-aside {
+            width: 80px;
+            height: 480px;
+            background-color: #ccc;
+            position: fixed;
+            left: 35px;
+            top: 80px;
+            z-index: 1000;
+        }
+        .tt-aside ul li {
+            width: 78px;
+            height: 78px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 78px;
+            cursor: pointer;
+        }
+        .tt-aside ul li.active {
+            background-color: red;
+            color: white;
+        }
+        .tt-contain {
+            width: 1200px;
+            height: 700px;
+            overflow: hidden;
+        }
+        .tt-contain ol {
+            margin-top: 0px;
+        }
+        .tt-contain ol li {
+            width: 1200px;
+            height: 700px;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tt-wraper">
+        <div class="tt-aside">
+            <ul>
+                <li class="active">A</li>
+                <li>B</li>
+                <li>C</li>
+                <li>D</li>
+                <li>E</li>
+                <li>F</li>
+            </ul>
+        </div>
+        <div class="tt-contain">
+            <ol>
+                <li>A</li>
+                <li>B</li>
+                <li>C</li>
+                <li>D</li>
+                <li>E</li>
+                <li>F</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    // 面对对象
+    // 楼层跳跃
+    // 思考： 需要哪些属性（记录那些数据）
+    //        定义哪些方法
+    // 1.0 定义构造函数
+    function Page() {
+        // 2.0 添加属性
+        this.menuItems = document.querySelectorAll(".tt-aside ul li");
+        this.ol = document.querySelector(".tt-contain ol");
+        this.height = 700;
+        this.index = 0;
+        this.arrColor=["red","blue","green","pink","purple","orange"];
+        this.containItems = document.querySelectorAll(".tt-contain ol li");
+        // .....
+        // 3.0 添加方法
+        // 3.0.1 实现动画 (目标属性值 = 当前属性值 + 步长)
+        this.animate = function(dom,option) { // {marginTop:"100px"}
+            clearInterval(dom.timer);
+            dom.timer = setInterval(function(){
+                var bool = true;
+                // 循环
+                for(var property in  option) {
+                    // 获取当前属性值
+                    var current = getComputedStyle(dom,null)[property];
+                    current = parseInt(current);
+                    // 步长
+                    // parseInt(option[property] 传递进来的数值
+                    var speed = (parseInt(option[property]) - current) / 10;
+                    // 处理小数点
+                    speed =  speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    // 判断
+                    if(current != parseInt(option[property])) {
+                        bool = false;
+                    }
+                    // 设置dom的属性
+                    dom.style[property] = current + speed + "px";
+                }
+
+                // 当dom属性达到目标值,才停止定时器函数
+                if(bool){
+                    clearInterval(dom.timer);
+                }
+            },30)
+        }
+        // 3.0.2 点击楼层跳跃
+        this.clickJump = function(){
+            // 4.0 记录当前函数作用域的this ==== Page {}
+            var _this = this;
+            // 5.0 循环侧栏菜单
+            for(var i = 0 ; i < this.menuItems.length ; i++){
+                // 6.0 属性绑定
+                this.menuItems[i].index = i;
+                // 7.0 事件绑定
+                this.menuItems[i].onclick = function(){
+                    // 8.0 当前点击的li标签的索引 index
+                    // 当前函数的作用域 this === 点击的li标签 事件的调用者
+                    _this.index = this.index;
+                    // 9.0 排他思想
+                    for(var j = 0 ; j < _this.menuItems.length;j++){
+                        // 10.0 移除所有li标签的类名
+                        _this.menuItems[j].className=""
+                    }
+                    // 11.0 当前点击的li标签设置类名
+                    _this.menuItems[_this.index].className="active";
+                    // 12. 设置ol标签动画切换
+                    _this.animate(_this.ol,{
+                        marginTop:-(_this.index * _this.height)
+                    });
+                }
+            }
+        }
+        // 3.0.3 给每内容栏添加背景色
+        this.fillBackground = function(){
+            // 循环内容栏
+            for(var i = 0 ; i < this.containItems.length ; i++){
+                // 设置每个内容栏的背景色
+                this.containItems[i].style.backgroundColor = this.arrColor[i];
+            }
+        }
+        // 3.0.4 初始化
+        this.init = function(){
+            // 调用设置内容栏背景色函数
+            this.fillBackground();
+            // 调用楼层跳跃函数
+            this.clickJump();
+        }
+    }
+
+    // 13.创建构造函数的实例
+    var fn =  new Page();
+    // 14.调用实例的clickJump方法
+    // fn.clickJump();
+    // 15.调用实例对象的init方法
+    fn.init();
+
+</script>
