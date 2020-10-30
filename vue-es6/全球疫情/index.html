@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>疫情通报</title>
+    <link rel="stylesheet" href="./bootstrap-3.3.7/dist/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+
+    <style>
+        .wrapper {
+            /* width: 100%; */
+            height: 100%;
+        }
+
+        .row {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .dropdown-backdrop {
+            z-index: -1;
+        }
+
+        ul.nav-tabs .col-xs-4 {
+            padding: 0;
+        }
+
+        ul.nav-tabs li a {
+            text-align: center;
+            margin-right: 0;
+        }
+
+        .tab-content .data {
+            /* padding-top: 10px; */
+            text-align: center;
+        }
+
+        .tab-content .data>div {
+            margin-top: 20px;
+        }
+
+        .tab-content .data div .title {
+            font-size: 15px;
+            font-family: Arial;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        .tab-content .data div .num {
+            font-size: 21px;
+            font-family: Arial;
+            /* color: #e83132; */
+        }
+
+        .tab-content .data .diagnosis .num {
+            color: #e83132;
+        }
+
+        .tab-content .data .cure .num {
+            color: #008d5d;
+        }
+
+        .tab-content .data .death .num {
+            color: #666666;
+        }
+
+        .tab-content .data .currentDiagnosis .num {
+            color: #fe5400;
+        }
+
+        .tab-content .data .overseasImport .num {
+            color: #638aa7;
+        }
+
+        .tab-content .data .Suspected .num {
+            color: #e58400;
+        }
+
+        .tab-content .data div .contrast {
+            font-size: 11px;
+            margin-top: 6px;
+            color: #999999;
+        }
+
+        .tab-content .list .title {
+            height: 30px;
+        }
+
+        .tab-content .list .title ul {
+            display: flex;
+            padding: 0;
+        }
+
+        .tab-content .list .title ul li {
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .list .content .dropdown button {
+            width: 100%;
+            border: none;
+            outline: none;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            margin-top: 5px;
+            position: relative;
+
+        }
+
+        .list .content .dropdown button ul {
+            border-radius: 20px;
+            background-color: #f5f5f5;
+            height: 30px;
+            line-height: 30px;
+            display: flex;
+            padding: 0;
+            font-size: 12px;
+            margin-bottom: 0;
+
+        }
+
+        .list .content .dropdown button ul li {
+            /* float: left;     */
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .list .content .dropdown .caret {
+            position: absolute;
+            top: 40%;
+            right: 10px;
+        }
+
+        .list .content .dropdown ul.dropdown-menu {
+            width: 100%;
+            border-radius: 20px;
+            height: 30px;
+            position: static;
+            box-shadow: none;
+            border: none;
+            margin-top: 5px;
+        }
+
+        .list .content .dropdown .dropdown-menu li {
+            width: 20%;
+            font-size: 10px;
+            float: left;
+            height: 25px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #messages .data .title {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        #messages .data .num {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="title row">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active col-xs-4"><a href="#home" aria-controls="home" role="tab"
+                            data-toggle="tab">国内疫情</a></li>
+                    <li role="presentation" class="col-xs-4"><a href="#profile" aria-controls="profile" role="tab"
+                            data-toggle="tab">国外疫情</a></li>
+                    <li role="presentation" class="col-xs-4"><a href="#messages" aria-controls="messages" role="tab"
+                            data-toggle="tab">全球疫情</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <div class="data row">
+                            <div class="diagnosis col-xs-4">
+                                <div class="title">累计确诊</div>
+                                <div class="num"></div>
+                                <div class="contrast">较上日<span>+139</span></div>
+                            </div>
+                            <div class="cure col-xs-4">
+                                <div class="title">累计治愈</div>
+                                <div class="num"></div>
+                                <div class="contrast">较上日<span class="">+139</span></div>
+                            </div>
+                            <div class="death col-xs-4">
+                                <div class="title">累计死亡</div>
+                                <div class="num"></div>
+                                <div class="contrast">较上日<span>+139</span></div>
+                            </div>
+                            <div class="currentDiagnosis col-xs-4">
+                                <div class="title">现有确诊</div>
+                                <div class="num"></div>
+                                <div class="contrast">较上日<span>+139</span></div>
+                            </div>
+                            <div class="overseasImport col-xs-4">
+                                <div class="title">境外输入确诊</div>
+                                <div class="num"></div>
+                                <div class="contrast">较上日<span>+139</span></div>
+                            </div>
+                            <div class="Suspected col-xs-4">
+                                <div class="title">现有疑似</div>
+                                <div class="num">2</div>
+                                <div class="contrast">较上日<span>+1</span></div>
+                            </div>
+                        </div>
+                        <div class="list row">
+                            <h3>国内疫情</h3>
+                            <div class="title col-xs-12">
+                                <ul>
+                                    <li>地区</li>
+                                    <li>现有确诊</li>
+                                    <li>累计确诊</li>
+                                    <li>死亡</li>
+                                    <li>治愈</li>
+                                </ul>
+                            </div>
+                            <div class="content col-xs-12">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <div class="list row">
+                            <h3>国外疫情</h3>
+                            <div class="title col-xs-12">
+                                <ul>
+                                    <li>地区</li>
+                                    <li>现有确诊</li>
+                                    <li>累计确诊</li>
+                                    <li>死亡</li>
+                                    <li>治愈</li>
+                                </ul>
+                            </div>
+                            <div class="content col-xs-12">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="messages">
+                        <div class="data row">
+                            <div class="diagnosis col-xs-3 box1">
+                                <div class="title">累计确诊</div>
+                                <div class="num"></div>
+                                <div class="contrast">较上日<span>+260469</span></div>
+                            </div>
+                            <div class="cure col-xs-3 box2">
+                                <div class="title">现有确诊</div>
+                                <div class="num"></div>
+                                <div class="contrast">较上日<span>+79448</span></div>
+                            </div>
+                            <div class="death col-xs-3 box3">
+                                <div class="title">累计治愈</div>
+                                <div class="num"></div>
+                                <div class="contrast">较上日<span>+175105</span></div>
+                            </div>
+                            <div class="currentDiagnosis col-xs-3 box4">
+                                <div class="title">累计死亡</div>
+                                <div class="num"></div>
+                                <div class="contrast">较上日<span>+5916</span></div>
+                            </div>
+                            <div class="overseasImport col-xs-3 box5">
+                                <div class="title">美国确诊</div>
+                                <div class="num">4169991</div>
+                                <div class="contrast">较上日<span>+69116</span></div>
+                            </div>
+                            <div class="Suspected col-xs-3 box6">
+                                <div class="title">巴西确诊</div>
+                                <div class="num">2289951</div>
+                                <div class="contrast">较上日<span>+58080</span></div>
+                            </div>
+                            <div class="Suspected col-xs-3 box7">
+                                <div class="title">印度确诊</div>
+                                <div class="num">1288130</div>
+                                <div class="contrast">较上日<span>+48446</span></div>
+                            </div>
+                            <div class="Suspected col-xs-3 box8">
+                                <div class="title">俄罗斯确诊</div>
+                                <div class="num">795038</div>
+                                <div class="contrast">较上日<span>+5848</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // 省市疫情接口 ：http://api.tianapi.com/txapi/ncovcity/index
+    // 海外肺炎疫情接口 ：http://api.tianapi.com/txapi/ncovabroad/index
+    // 抗击疫情接口 ：http://api.tianapi.com/txapi/ncov/index    
+
+    // key :027711c93defb0ba5ca96c37710ed8b9
+
+    class Http {
+        //get请求
+        get(url) {
+            return new Promise((resolved, rejected) => {
+                //创建ajax对象
+                let xhr = new XMLHttpRequest();
+                //监听ajax状态变化
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        //凝固结果
+                        resolved(this.responseText);
+                    }
+                }
+                //建立服务器连接
+                xhr.open('GET', url, true);
+                //发起请求
+                xhr.send();
+            })
+        }
+    }
+
+    let diagnosisNum = document.querySelector('.diagnosis .num');
+    let diagnosisAdd = document.querySelector('.diagnosis span');
+
+    let cureNum = document.querySelector('.cure .num');
+    let cureAdd = document.querySelector('.cure span');
+
+    let deathNum = document.querySelector('.death .num');
+    let deathAdd = document.querySelector('.death span');
+
+    let currentDiagnosisNum = document.querySelector('.currentDiagnosis .num');
+    let currentDiagnosisAdd = document.querySelector('.currentDiagnosis span');
+
+    let overseasImportNum = document.querySelector('.overseasImport .num');
+    let overseasImportAdd = document.querySelector('.overseasImport span');
+
+    let SuspectedNum = document.querySelector('.Suspected .num');
+    let SuspectedAdd = document.querySelector('.Suspected span');
+
+    let http = new Http();
+    //发起get请求
+    // 海外肺炎疫情接口
+    http.get('http://api.tianapi.com/txapi/ncovabroad/index?key=027711c93defb0ba5ca96c37710ed8b9').then(result => {
+        result = JSON.parse(result);
+        console.log('result ==> ', result);
+
+        // 国内疫情
+        for (let key in result.newslist) {
+            if (result.newslist[key].provinceName == "中国") {
+                diagnosisNum.innerHTML = result.newslist[key].confirmedCount;
+                deathNum.innerHTML = result.newslist[key].deadCount;
+                currentDiagnosisNum.innerHTML = result.newslist[key].currentConfirmedCount;
+            }
+        }
+
+        // 国外疫情
+        let pros = {};
+        result.newslist.map(v => {
+            //如果pros不存在该商品类型
+            if (!pros[v.continents]) {
+                pros[v.continents] = [];
+            }
+            pros[v.continents].push(v);
+        })
+        // console.log(pros)
+
+        for (let key in pros) {
+            let dropdown = document.createElement('div');
+            dropdown.className = 'dropdown';
+            let contentbox = document.querySelector('#profile .content');
+
+            let continents = key;
+            let xyqz = 0;
+            let ljqz = 0;
+            let sw = 0;
+            let zy = 0;
+            for (let i in pros[key]) {
+                xyqz += parseInt(pros[key][i].currentConfirmedCount);
+                ljqz += parseInt(pros[key][i].confirmedCount);
+                sw += parseInt(pros[key][i].deadCount);
+                zy += parseInt(pros[key][i].curedCount);
+            }
+
+            let html = "";
+            html = `<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <ul>
+                            <li>${continents}</li>
+                            <li>${xyqz}</li>
+                            <li>${ljqz}</li>
+                            <li>${sw}</li>
+                            <li>${zy}</li>
+                        </ul>
+                        <span class="caret"></span>
+                    </button>`;
+            dropdown.innerHTML += html;
+            contentbox.appendChild(dropdown);
+
+            for (let i in pros[key]) {
+                let countryName = pros[key][i].provinceName;
+                let countryconfirmedCount = pros[key][i].currentConfirmedCount;
+                let countrycurrentConfirmedCount = pros[key][i].confirmedCount;
+                let countrydeadCount = pros[key][i].deadCount;
+                let countrycuredCount = pros[key][i].curedCount;
+
+                let html = "";
+                html = `<ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li>${countryName}</li>
+                            <li>${countryconfirmedCount}</li>
+                            <li>${countrycurrentConfirmedCount}</li>
+                            <li>${countrydeadCount}</li>
+                            <li>${countrycuredCount}</li>
+                        </ul>`;
+                dropdown.innerHTML += html;
+                contentbox.appendChild(dropdown)
+            }
+        }
+
+
+        // 全球疫情
+        let qqljqz = 0;
+        let qqxyqz = 0;
+        let qqljzy = 0;
+        let qqljsw = 0;
+        for (let key in result.newslist) {
+            // console.log(result.newslist[key].currentConfirmedCount);
+            let box1 = document.querySelector('.box1 .num');
+            let box2 = document.querySelector('.box2 .num');
+            let box3 = document.querySelector('.box3 .num');
+            let box4 = document.querySelector('.box4 .num');
+            let box5 = document.querySelector('.box5 .num');
+            let box6 = document.querySelector('.box6 .num');
+            let box7 = document.querySelector('.box7 .num');
+            let box8 = document.querySelector('.box8 .num');
+
+            qqljqz += parseInt(result.newslist[key].confirmedCount);
+            qqxyqz += parseInt(result.newslist[key].currentConfirmedCount);
+            qqljzy += parseInt(result.newslist[key].curedCount);
+            qqljsw += parseInt(result.newslist[key].deadCount);
+
+            box1.innerHTML = qqljqz;
+            box2.innerHTML = qqxyqz;
+            box3.innerHTML = qqljzy;
+            box4.innerHTML = qqljsw;
+        }
+    })
+
+    // 省市疫情接口
+    http.get('http://api.tianapi.com/txapi/ncovcity/index?key=05c9c231654fad19051ce388d3a14002').then(result => {
+        result = JSON.parse(result);
+        // console.log('result ==> ', result);
+
+        // 国内疫情
+        for (let key in result.newslist) {
+            let provinceName = result.newslist[key].provinceName;
+            let confirmedCount = result.newslist[key].currentConfirmedCount;
+            let currentConfirmedCount = result.newslist[key].confirmedCount;
+            let deadCount = result.newslist[key].deadCount;
+            let curedCount = result.newslist[key].curedCount;
+
+            let dropdown = document.createElement('div');
+            dropdown.className = 'dropdown';
+            let contentbox = document.querySelector('.content');
+
+            let html = "";
+            html = `<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <ul>
+                            <li>${provinceName}</li>
+                            <li>${confirmedCount}</li>
+                            <li>${currentConfirmedCount}</li>
+                            <li>${deadCount}</li>
+                            <li>${curedCount}</li>
+                        </ul>
+                        <span class="caret"></span>
+                    </button>`
+            dropdown.innerHTML += html;
+            contentbox.appendChild(dropdown)
+
+            for (let i in result.newslist[key].cities) {
+                // console.log(result.newslist[key].cities)
+                let cityName = result.newslist[key].cities[i].cityName;
+                let cityconfirmedCount = result.newslist[key].cities[i].currentConfirmedCount;
+                let citycurrentConfirmedCount = result.newslist[key].cities[i].confirmedCount;
+                let citydeadCount = result.newslist[key].cities[i].deadCount;
+                let citycuredCount = result.newslist[key].cities[i].curedCount;
+
+                let html = "";
+                html = `<ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li>${cityName}</li>
+                            <li>${cityconfirmedCount}</li>
+                            <li>${citycurrentConfirmedCount}</li>
+                            <li>${citydeadCount}</li>
+                            <li>${citycuredCount}</li>
+                        </ul>`;
+                dropdown.innerHTML += html;
+                contentbox.appendChild(dropdown)
+            }
+        }
+    })
+
+    // 抗击疫情接口
+    http.get('http://api.tianapi.com/txapi/ncov/index?key=027711c93defb0ba5ca96c37710ed8b9').then(result => {
+        result = JSON.parse(result);
+        // console.log('result ==> ', result);
+
+        // 国内疫情
+        for (let key in result.newslist) {
+            cureNum.innerHTML = result.newslist[key].desc.curedCount;
+            overseasImportNum.innerHTML = result.newslist[key].desc.suspectedCount;
+
+            diagnosisAdd.innerHTML = "+" + result.newslist[key].desc.confirmedIncr;
+            cureAdd.innerHTML = "+" + result.newslist[key].desc.curedIncr;
+            deathAdd.innerHTML = "+" + result.newslist[key].desc.deadIncr;
+            currentDiagnosisAdd.innerHTML = "+" + result.newslist[key].desc.currentConfirmedIncr;
+            overseasImportAdd.innerHTML = "+" + result.newslist[key].desc.suspectedIncr;
+        }
+    })
+</script>
+</html>
