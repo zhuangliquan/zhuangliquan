@@ -16,7 +16,7 @@ img {
     width: 420px;
     height: 280px;
     border: 10px solid #ccc;
-    margin: 150px auto;
+    margin: 60px auto;
     overflow: hidden;
 
     position: relative;/* 相对定位 */

@@ -75,7 +75,7 @@ a,img{text-decoration:none;border:none;}
 .page2 .news-content{padding:15px 15px}
 .page2 .news-content h4{text-align: center;font-weight: bold;}
 .page2 .news-content .date{color:#bbb;font-size:12px;margin-bottom:15px;text-align: center;}
-.page2 .news-content p{color:#999;height:55px;overflow:hidden}
+.page2 .news-content p{color:#999;min-height:55px;overflow:hidden}
 .page2 .news-content .btn{display:inline-block;margin-top:15px;padding:0;background:0 0;border:none;color:#29B6F6;-webkit-transition:all .4s ease;-moz-transition:all .4s ease;transition:all .4s ease}
 .page2 .news-content .btn:hover{color:#333}
 .page2 .new-article{text-align:center}

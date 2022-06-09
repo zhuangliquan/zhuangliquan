@@ -7,11 +7,11 @@ function Snake(){
     this.resultElement = document.getElementById("result");
     this.score = 0;
     // 多少行
-    this.rowCount = 25;
+    this.rowCount = 20;
     // 多少列
-    this.colCount = 25;
+    this.colCount = 20;
     // 尺寸
-    this.size = 25;
+    this.size = 20;
     // 记录所有li标签的大数组
     this.elements = [];
     // 记录代表设的li标签的数字

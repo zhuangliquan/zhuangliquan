@@ -17,7 +17,11 @@
         }
 
         .time-box {
-            margin: 120px auto;
+            position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+            /* margin: 20px auto; */
             width: 504px;
             height: 504px;
             /* background-color: #ccc; */
@@ -183,9 +187,9 @@
             }
         } */
         .date{
-            top: 305px;
-            left: 250px;
-            position: absolute;
+            top: 200px;
+            left: 100px;
+            position: fixed;
         }
 
         .date > div {
@@ -216,13 +220,13 @@
             <li class="circle"></li>
             <li class="cover"></li>
         </ul>
-        <div class="date">
-            <div><span>00</span><span>00</span><span>00</span></div>
+    </div>
+    <div class="date">
+        <div><span>00</span><span>00</span><span>00</span></div>
 
-            <div><span>1900</span><span>1</span><span>1</span></div>
+        <div><span>1900</span><span>1</span><span>1</span></div>
 
-            <div><span>星期一</span></div>
-        </div>
+        <div><span>星期一</span></div>
     </div>
 </body>
 
